@@ -3,10 +3,10 @@ package GUI;
 import java.awt.*;
 import javax.swing.*;
 
-public class prueba2 extends JFrame{
+public class PruebaBase extends JFrame{
 	
 	
-	public prueba2(){
+	public PruebaBase(){
 		
 		setSize(500,800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,6 +88,7 @@ public class prueba2 extends JFrame{
 		bloque7.add(campoApariencia);
 		bloque7.add(botonApariencia);
 		add(bloque7);
+		
 	
 		setVisible(true);
 	}
@@ -96,7 +97,7 @@ public class prueba2 extends JFrame{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		prueba2 frame=new prueba2();
+		PruebaBase frame=new PruebaBase();
 	}
 
 }
