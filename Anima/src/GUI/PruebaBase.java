@@ -89,7 +89,7 @@ public class PruebaBase extends JFrame{
 		bloque7.add(botonApariencia);
 		add(bloque7);
 		
-	
+		this.pack();
 		setVisible(true);
 	}
 	//-----------------------------------------------------------------
