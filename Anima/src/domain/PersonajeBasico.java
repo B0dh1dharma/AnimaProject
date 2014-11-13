@@ -18,6 +18,11 @@ public class PersonajeBasico {
 		public ResistenciaPsiquica RP;
 		public Collection<Habilidad> habilidades;
 		public Collection<Atributo> atributos;
+		
+		public PersonajeBasico(){
+			
+		}
+		
 		/*
 		public PersonajeBasico(Ataque ataque,Defensa defensa,Esquiva esquiva, PuntosDeVida PV, Collection<Turno> turnos, Clases clase,
 				Integer nivel,ResistenciaMagica RM,ResistenciaFisica RF,ResistenciaVenenos RV,ResistenciaPsiquica RP, 
@@ -38,4 +43,5 @@ public class PersonajeBasico {
 			
 		}
 		*/
+		
 }
