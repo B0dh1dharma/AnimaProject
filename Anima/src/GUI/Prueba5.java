@@ -30,7 +30,7 @@ public class Prueba5 extends JFrame{
 		JPanel bloque1=new JPanel();
 		GridLayout layout1=new GridLayout(1,4,0,0);
 		bloque1.setLayout(layout1);
-		/*Tamaño panel
+		/*Tamaï¿½o panel
 		Insets inset=bloque1.getInsets();
 		bloque1.setSize(new Dimension(inset.left+inset.right+100,inset.top+inset.bottom+100));
 		*/
@@ -75,11 +75,11 @@ public class Prueba5 extends JFrame{
 		campoRaza.addItem("J'Ayan");
 		bloque3.add(raza);
 		bloque3.add(campoRaza);
-		JLabel tamaño=new JLabel("Tamaño",JLabel.RIGHT);
-		JTextField campoTamaño= new JTextField(5);
+		JLabel tamaÃ±o=new JLabel("Tamaï¿½o",JLabel.RIGHT);
+		JTextField campoTamaÃ±o= new JTextField(5);
 		campoPD.setEditable(false);
-		bloque3.add(tamaño);
-		bloque3.add(campoTamaño);
+		bloque3.add(tamaÃ±o);
+		bloque3.add(campoTamaÃ±o);
 		personaje.add(bloque3);
 		
 		//Fila 4

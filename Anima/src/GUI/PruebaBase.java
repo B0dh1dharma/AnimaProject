@@ -71,11 +71,11 @@ public class PruebaBase extends JFrame{
 		
 		JPanel bloque6=new JPanel();
 		bloque6.setLayout(layout1);
-		JLabel tamaño=new JLabel("Tamaño",JLabel.RIGHT);
-		JTextField campoTamaño= new JTextField(5);
+		JLabel tamaÃ±o=new JLabel("TamaÃ±o",JLabel.RIGHT);
+		JTextField campoTamaÃ±o= new JTextField(5);
 		campoPD.setEditable(false);
-		bloque6.add(tamaño);
-		bloque6.add(campoTamaño);
+		bloque6.add(tamaÃ±o);
+		bloque6.add(campoTamaÃ±o);
 		add(bloque6);
 		
 		JPanel bloque7=new JPanel();
