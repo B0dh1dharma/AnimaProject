@@ -64,11 +64,11 @@ public class Prueba3 extends JFrame{
 		campoRaza.addItem("J'Ayan");
 		bloque3.add(raza);
 		bloque3.add(campoRaza);
-		JLabel tamaño=new JLabel("Tama�o",JLabel.RIGHT);
-		JTextField campoTamaño= new JTextField(5);
+		JLabel tamano=new JLabel("Tama�o",JLabel.RIGHT);
+		JTextField campoTamano= new JTextField(5);
 		campoPD.setEditable(false);
-		bloque3.add(tamaño);
-		bloque3.add(campoTamaño);
+		bloque3.add(tamano);
+		bloque3.add(campoTamano);
 		add(bloque3);
 		
 		//Fila 4
