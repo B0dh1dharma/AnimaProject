@@ -21,26 +21,45 @@ import javax.swing.border.BevelBorder;
 import javax.swing.ListSelectionModel;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ContainerEvent;
+import java.awt.event.ContainerListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.border.MatteBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.JTextArea;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
+
+import utilities.*;
 
 public class animaGUI {
 
 	private JFrame frame;
 	private JTextField getterName;
-	private JTextField textField_1;
+	private JComboBox getterLevel;
+	private JTextField textFieldApa;
 	private JTable tablaAtributos;
-	private JTextField textField;
-	private JTextField textField_2;
-
+	private JTextField textFieldPD;
+	private JTextField textFieldTam;
+	private JTextArea textAreaTirador;
+	private JButton btnTiradorAtributos;
+	private JButton btnTiradorApa;
+	private JComboBox getterTipoTiradaAtributos;
+	private Integer tipoTirada=1; 
+	private JComboBox getterClase;
+	private JPanel imagePanel;
+	private BufferedImage imagen;
+	private JLabel imagenLabel;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -111,11 +130,14 @@ public class animaGUI {
 				return columnEditables[column];
 			}
 		});
+		
 		tablaAtributos.getColumnModel().getColumn(0).setResizable(false);
 		tablaAtributos.getColumnModel().getColumn(1).setResizable(false);
 		tablaAtributos.getColumnModel().getColumn(2).setResizable(false);
 		tablaAtributos.getColumnModel().getColumn(3).setResizable(false);
 		
+		
+//Nombre
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(37, 49, 46, 14);
 		frame.getContentPane().add(lblNombre);
@@ -125,55 +147,75 @@ public class animaGUI {
 		frame.getContentPane().add(getterName);
 		getterName.setColumns(10);
 		
+//Nivel
 		JLabel lblNewLabel = new JLabel("Nivel");
 		lblNewLabel.setBounds(235, 49, 46, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JComboBox getterLevel = new JComboBox();
-		getterLevel.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6"}));
+		getterLevel = new JComboBox();
+		getterLevel.setModel(new DefaultComboBoxModel(new String[] {"0","1", "2", "3", "4", "5", "6"}));
 		getterLevel.setBounds(272, 46, 46, 20);
 		frame.getContentPane().add(getterLevel);
+		ActionLevel actionLevel=new ActionLevel();
+		getterLevel.addActionListener(actionLevel);
 		
+//Clase		
 		JLabel lblCategora = new JLabel("Categor\u00EDa");
 		lblCategora.setBounds(37, 85, 55, 14);
 		frame.getContentPane().add(lblCategora);
 		
-		JComboBox getterClass = new JComboBox();
-		getterClass.setModel(new DefaultComboBoxModel(new String[] {"Guerrero", "Guerrero Acr\u00F3bata"}));
-		getterClass.setBounds(93, 82, 145, 20);
-		frame.getContentPane().add(getterClass);
+		getterClase = new JComboBox();
+		getterClase.setModel(new DefaultComboBoxModel(new String[] {"Guerrero", "Guerrero Acrobata"}));
+		getterClase.setBounds(93, 82, 145, 20);
+		frame.getContentPane().add(getterClase);
 		
+		ActionClase actionClase=new ActionClase();
+		getterClase.addActionListener(actionClase);
+		
+//PD
 		JLabel lblPdesarrollo = new JLabel("P.Desarrollo");
 		lblPdesarrollo.setBounds(272, 88, 73, 14);
 		frame.getContentPane().add(lblPdesarrollo);
 		
+		textFieldPD = new JTextField();
+		textFieldPD.setEditable(false);
+		textFieldPD.setBounds(345, 85, 86, 20);
+		frame.getContentPane().add(textFieldPD);
+		textFieldPD.setColumns(10);
+		textFieldPD.setText("400");
+		
+//Raza
 		JLabel lblRaza = new JLabel("Raza");
 		lblRaza.setBounds(37, 121, 46, 14);
 		frame.getContentPane().add(lblRaza);
 		
-		JComboBox getterRaza = new JComboBox();
+		final JComboBox getterRaza = new JComboBox();
 		getterRaza.setModel(new DefaultComboBoxModel(new String[] {"Humano"}));
 		getterRaza.setBounds(93, 118, 86, 20);
 		frame.getContentPane().add(getterRaza);
 		
-		JLabel lblTamao = new JLabel("Tama\u00F1o:");
+		JLabel lblTamao = new JLabel("Tamano:");
 		lblTamao.setBounds(272, 124, 46, 14);
 		frame.getContentPane().add(lblTamao);
 		
+//Apariencia
 		JLabel lblApariencia = new JLabel("Apariencia");
 		lblApariencia.setBounds(37, 160, 55, 14);
 		frame.getContentPane().add(lblApariencia);
 		
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setBounds(93, 157, 86, 20);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		textFieldApa = new JTextField();
+		textFieldApa.setEditable(false);
+		textFieldApa.setBounds(93, 157, 86, 20);
+		frame.getContentPane().add(textFieldApa);
+		textFieldApa.setColumns(10);
 		
-		JButton btnTirador = new JButton("Tirador");
-		btnTirador.setBounds(229, 156, 89, 23);
-		frame.getContentPane().add(btnTirador);
-		
+		btnTiradorApa = new JButton("Tirador");
+		btnTiradorApa.setBounds(229, 156, 89, 23);
+		frame.getContentPane().add(btnTiradorApa);
+		ActionTirador actionTiradorApa = new ActionTirador();
+		btnTiradorApa.addActionListener(actionTiradorApa);
+	
+//Atributos
 		JLabel lblBase = new JLabel("Base");
 		lblBase.setBounds(109, 215, 46, 14);
 		frame.getContentPane().add(lblBase);
@@ -186,85 +228,151 @@ public class animaGUI {
 		lblBono.setBounds(247, 215, 46, 14);
 		frame.getContentPane().add(lblBono);
 		
-		JPanel imagePanel = new JPanel();
+		imagePanel = new JPanel();
 		imagePanel.setBounds(539, 49, 271, 400);
 		frame.getContentPane().add(imagePanel);
-		//
-		JPanel bloqueImagen=new JPanel();
 		
-		//Inserta imagen
-		BufferedImage imagen = ImageIO.read(new File("src/Images/Guerrero.png"));
-		JLabel imagenLabel = new JLabel(new ImageIcon(imagen));
+//Inserta imagen
+		JPanel bloqueImagen=new JPanel();
+		imagen = ImageIO.read(new File("src/Images/Guerrero.png"));
+		imagenLabel = new JLabel(new ImageIcon(imagen));
 		imagePanel.add(imagenLabel);
 		imagePanel.repaint();
 		
-		JButton btnTirador_1 = new JButton("Tirador");
-		btnTirador_1.setBounds(320, 229, 89, 23);
-		frame.getContentPane().add(btnTirador_1);
+		btnTiradorAtributos = new JButton("Tirador");
+		btnTiradorAtributos.setBounds(320, 229, 89, 23);
+		frame.getContentPane().add(btnTiradorAtributos);
+		ActionTirador actionTirador2 = new ActionTirador();
+		btnTiradorAtributos.addActionListener(actionTirador2);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Tipo 1", "Tipo 2", "Tipo 3", "Tipo 4"}));
-		comboBox.setBounds(443, 230, 64, 20);
-		frame.getContentPane().add(comboBox);
+		getterTipoTiradaAtributos = new JComboBox();
+		getterTipoTiradaAtributos.setModel(new DefaultComboBoxModel(new String[] {"Tipo 1", "Tipo 2", "Tipo 3", "Tipo 4"}));
+		getterTipoTiradaAtributos.setBounds(443, 230, 64, 20);
+		frame.getContentPane().add(getterTipoTiradaAtributos);
+		ActionTipoTirada actionTipoTirada = new ActionTipoTirada();
+		getterTipoTiradaAtributos.addActionListener(actionTipoTirada);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setEditable(false);
-		textArea.setBounds(320, 256, 187, 105);
-		frame.getContentPane().add(textArea);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setBounds(338, 85, 86, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		textAreaTirador = new JTextArea();
+		textAreaTirador.setEditable(false);
+		textAreaTirador.setBounds(320, 256, 187, 105);
+		frame.getContentPane().add(textAreaTirador);
 		
-		textField_2 = new JTextField();
-		textField_2.setEditable(false);
-		textField_2.setBounds(343, 118, 81, 20);
-		frame.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
-		/*
-		//combosBox-Ventajas
-		JComboBox ventaja1 = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ventaja1 1","Ventaja 2","Ventaja 3", "Ventaja 4", "Ventaja 5", "Ventaja 6"}));
-		JComboBox ventaja2 = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ventaja1 1","Ventaja 2", "Ventaja 3", "Ventaja 4", "Ventaja 5", "Ventaja 6"}));
-		JComboBox ventaja3 = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ventaja1 1","Ventaja 2", "Ventaja 3", "Ventaja 4", "Ventaja 5", "Ventaja 6"}));
-		JComboBox ventaja4 = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ventaja1 1","Ventaja 2", "Ventaja 3", "Ventaja 4", "Ventaja 5", "Ventaja 6"}));
-		JComboBox ventaja5 = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ventaja1 1","Ventaja 2", "Ventaja 3", "Ventaja 4", "Ventaja 5", "Ventaja 6"}));
-		JComboBox ventaja6 = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ventaja1 1","Ventaja 2", "Ventaja 3", "Ventaja 4", "Ventaja 5", "Ventaja 6"}));
-		//
-		JComboBox desventaja1 = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Desventaja1 1,Desventaja 2, Desventaja 3, Desventaja 4, Desventaja 5, Desventaja 6"}));
-		JComboBox desventaja2 = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Desventaja1 1,Desventaja 2, Desventaja 3, Desventaja 4, Desventaja 5, Desventaja 6"}));
-		JComboBox desventaja3 = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Desventaja1 1,Desventaja 2, Desventaja 3, Desventaja 4, Desventaja 5, Desventaja 6"}));
-		JComboBox desventaja4 = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Desventaja1 1,Desventaja 2, Desventaja 3, Desventaja 4, Desventaja 5, Desventaja 6"}));
-		JComboBox desventaja5 = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Desventaja1 1,Desventaja 2, Desventaja 3, Desventaja 4, Desventaja 5, Desventaja 6"}));
-		JComboBox desventaja6 = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Desventaja1 1,Desventaja 2, Desventaja 3, Desventaja 4, Desventaja 5, Desventaja 6"}));
-		//
-		tablaVentajas.setModel(new DefaultTableModel(
-			new Object[][] {
-				{ventaja1, desventaja1},
-				{ventaja2, desventaja2},
-				{ventaja3, desventaja3},
-				{ventaja4, desventaja4},
-				{ventaja5, desventaja5},
-			},
-			new String[] {
-				"New column", "New column"
-			}
-		));
-		tablaVentajas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		*/
+		
+		textFieldTam = new JTextField();
+		textFieldTam.setEditable(false);
+		textFieldTam.setBounds(343, 118, 81, 20);
+		frame.getContentPane().add(textFieldTam);
+		textFieldTam.setColumns(10);
 		
 	}
+	
+	public class ActionLevel implements ActionListener{
+		
+		public void actionPerformed(ActionEvent event){
+			
+			if(getterLevel.getSelectedItem()=="0"){
+				textFieldPD.setText("400");
+			}
+			
+			if(getterLevel.getSelectedItem()=="1"){
+				textFieldPD.setText("600");
+			}
+			
+			if(getterLevel.getSelectedItem()=="2"){
+				textFieldPD.setText("700");
+			}
+			
+		}
+	}
+	
+	public class ActionTirador implements ActionListener{
+		
+		public void actionPerformed(ActionEvent event){
+			
+			if(event.getSource()==btnTiradorAtributos && tipoTirada==1)
+				textAreaTirador.setText(utilities.Tirador.atributosTipo1().toString());
+			
+			if(event.getSource()==btnTiradorAtributos && tipoTirada==2)
+				textAreaTirador.setText(utilities.Tirador.atributosTipo2().toString());
+			
+			if(event.getSource()==btnTiradorAtributos && tipoTirada==3){
+				ArrayList<Integer> tiradas=utilities.Tirador.atributosTipo3();
+				textAreaTirador.setText(tiradas.toString());
+				for(int i=0;i<tiradas.size();i++){
+					tablaAtributos.setValueAt(tiradas.get(i), i, 1);
+				
+				}
+
+			}	
+			
+			if(event.getSource()==btnTiradorAtributos && tipoTirada==4){
+				ArrayList<Integer> tiradas=utilities.Tirador.atributosTipo4();
+				Integer suma=0;
+				for(int i=0;i<7;i++)
+					suma+=tiradas.get(i);
+				textAreaTirador.setText(tiradas.toString().concat("\nTotal: "+suma.toString()));
+			}
+			
+			if(event.getSource()==btnTiradorApa)
+				textFieldApa.setText(utilities.Tirador.d10().toString());
+		}
+					
+	}
+	
+	public class ActionTipoTirada implements ActionListener{
+		
+		public void actionPerformed(ActionEvent event){
+			
+			if(getterTipoTiradaAtributos.getSelectedItem()=="Tipo 1"){
+				tipoTirada=1;
+			}
+			
+			if(getterTipoTiradaAtributos.getSelectedItem()=="Tipo 2"){
+				tipoTirada=2;
+			}
+			
+			if(getterTipoTiradaAtributos.getSelectedItem()=="Tipo 3"){
+				tipoTirada=3;
+			}
+			
+			if(getterTipoTiradaAtributos.getSelectedItem()=="Tipo 4"){
+				tipoTirada=4;
+			}
+		}
+	}
+	
+	public class ActionClase implements ActionListener{
+		
+		public void actionPerformed(ActionEvent event){
+			
+			if(getterClase.getSelectedItem()=="Guerrero"){
+				try {
+					imagen = ImageIO.read(new File("src/Images/Guerrero.png"));
+					imagenLabel = new JLabel(new ImageIcon(imagen));
+					imagePanel.add(imagenLabel);
+					imagePanel.repaint();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			if(getterClase.getSelectedItem()=="Guerrero Acrobata"){
+				
+					try {
+						imagen = ImageIO.read(new File("src/Images/Acrobata.png"));
+						imagenLabel = new JLabel(new ImageIcon(imagen));
+						imagePanel.add(imagenLabel);
+						imagePanel.repaint();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+			}
+			
+		}
+	}
+	
 }

@@ -14,4 +14,9 @@ public class Ataque {
 		this.categoria=categoria;
 	}
 	
+
+	public void setAtaque(Integer base){
+		this.base=base;
+	}
+	
 }

@@ -18,15 +18,19 @@ public class PersonajeBasico {
 		public ResistenciaPsiquica RP;
 		public Collection<Habilidad> habilidades;
 		public Collection<Atributo> atributos;
+		public String nombre;
+		
 		
 		public PersonajeBasico(){
 			
 		}
 		
-		/*
-		public PersonajeBasico(Ataque ataque,Defensa defensa,Esquiva esquiva, PuntosDeVida PV, Collection<Turno> turnos, Clases clase,
+		
+		public PersonajeBasico(String nombre,Ataque ataque,Defensa defensa,Esquiva esquiva, PuntosDeVida PV, Collection<Turno> turnos, Clases clase,
 				Integer nivel,ResistenciaMagica RM,ResistenciaFisica RF,ResistenciaVenenos RV,ResistenciaPsiquica RP, 
 				Collection<Habilidad> habilidades,Collection<Atributo> atributos){
+			
+			this.nombre=nombre;
 			this.ataque=ataque;
 			this.defensa=defensa;
 			this.esquiva=esquiva;
@@ -42,6 +46,6 @@ public class PersonajeBasico {
 			this.atributos=atributos;
 			
 		}
-		*/
+		
 		
 }
