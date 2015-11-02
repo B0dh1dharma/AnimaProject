@@ -1,0 +1,3 @@
+commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>A\u00F1adido a la GUI los Action para el tirador de apariencia, el getter de&\#x0A;nivel y el tirador de atributos.&\#x0A;En proceso de cambio de imagen al cambiar de clase (getterClase&\#x0A;implementado)</message>\r\n</messages>
+eclipse.preferences.version=1
+show_initial_config_dialog=false

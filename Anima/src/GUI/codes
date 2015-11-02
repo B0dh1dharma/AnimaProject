@@ -1,0 +1,42 @@
+/*
+		//combosBox-Ventajas
+		JComboBox ventaja1 = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ventaja1 1","Ventaja 2","Ventaja 3", "Ventaja 4", "Ventaja 5", "Ventaja 6"}));
+		JComboBox ventaja2 = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ventaja1 1","Ventaja 2", "Ventaja 3", "Ventaja 4", "Ventaja 5", "Ventaja 6"}));
+		JComboBox ventaja3 = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ventaja1 1","Ventaja 2", "Ventaja 3", "Ventaja 4", "Ventaja 5", "Ventaja 6"}));
+		JComboBox ventaja4 = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ventaja1 1","Ventaja 2", "Ventaja 3", "Ventaja 4", "Ventaja 5", "Ventaja 6"}));
+		JComboBox ventaja5 = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ventaja1 1","Ventaja 2", "Ventaja 3", "Ventaja 4", "Ventaja 5", "Ventaja 6"}));
+		JComboBox ventaja6 = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ventaja1 1","Ventaja 2", "Ventaja 3", "Ventaja 4", "Ventaja 5", "Ventaja 6"}));
+		//
+		JComboBox desventaja1 = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Desventaja1 1,Desventaja 2, Desventaja 3, Desventaja 4, Desventaja 5, Desventaja 6"}));
+		JComboBox desventaja2 = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Desventaja1 1,Desventaja 2, Desventaja 3, Desventaja 4, Desventaja 5, Desventaja 6"}));
+		JComboBox desventaja3 = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Desventaja1 1,Desventaja 2, Desventaja 3, Desventaja 4, Desventaja 5, Desventaja 6"}));
+		JComboBox desventaja4 = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Desventaja1 1,Desventaja 2, Desventaja 3, Desventaja 4, Desventaja 5, Desventaja 6"}));
+		JComboBox desventaja5 = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Desventaja1 1,Desventaja 2, Desventaja 3, Desventaja 4, Desventaja 5, Desventaja 6"}));
+		JComboBox desventaja6 = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Desventaja1 1,Desventaja 2, Desventaja 3, Desventaja 4, Desventaja 5, Desventaja 6"}));
+		//
+		tablaVentajas.setModel(new DefaultTableModel(
+			new Object[][] {
+				{ventaja1, desventaja1},
+				{ventaja2, desventaja2},
+				{ventaja3, desventaja3},
+				{ventaja4, desventaja4},
+				{ventaja5, desventaja5},
+			},
+			new String[] {
+				"New column", "New column"
+			}
+		));
+		tablaVentajas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		*/
