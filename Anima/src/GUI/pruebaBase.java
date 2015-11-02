@@ -26,6 +26,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
 import java.awt.image.BufferedImage;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,13 +37,14 @@ import javax.swing.JTextPane;
 import javax.swing.border.MatteBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableModelListener;
 import javax.swing.JTextArea;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 
 import utilities.*;
 
-public class animaGUI {
+public class pruebaBase {
 
 	JFrame frame;
 	private JTextField getterName;
@@ -67,7 +70,7 @@ public class animaGUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					animaGUI window = new animaGUI();
+					pruebaBase window = new pruebaBase();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -80,7 +83,7 @@ public class animaGUI {
 	 * Create the application.
 	 * @throws IOException 
 	 */
-	public animaGUI() throws IOException {
+	public pruebaBase() throws IOException {
 		initialize();
 	}
 
@@ -136,85 +139,6 @@ public class animaGUI {
 		tablaAtributos.getColumnModel().getColumn(2).setResizable(false);
 		tablaAtributos.getColumnModel().getColumn(3).setResizable(false);
 		
-		
-//Nombre
-		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(37, 49, 46, 14);
-		frame.getContentPane().add(lblNombre);
-		
-		getterName = new JTextField();
-		getterName.setBounds(93, 46, 86, 20);
-		frame.getContentPane().add(getterName);
-		getterName.setColumns(10);
-		
-//Nivel
-		JLabel lblNewLabel = new JLabel("Nivel");
-		lblNewLabel.setBounds(235, 49, 46, 14);
-		frame.getContentPane().add(lblNewLabel);
-		
-		getterLevel = new JComboBox();
-		getterLevel.setModel(new DefaultComboBoxModel(new String[] {"0","1", "2", "3", "4", "5", "6"}));
-		getterLevel.setBounds(272, 46, 46, 20);
-		frame.getContentPane().add(getterLevel);
-		ActionLevel actionLevel=new ActionLevel();
-		getterLevel.addActionListener(actionLevel);
-		
-//Clase		
-		JLabel lblCategora = new JLabel("Categor\u00EDa");
-		lblCategora.setBounds(37, 85, 55, 14);
-		frame.getContentPane().add(lblCategora);
-		
-		getterClase = new JComboBox();
-		getterClase.setModel(new DefaultComboBoxModel(new String[] {"Guerrero", "Guerrero Acrobata"}));
-		getterClase.setBounds(93, 82, 145, 20);
-		frame.getContentPane().add(getterClase);
-		
-		ActionClase actionClase=new ActionClase();
-		getterClase.addActionListener(actionClase);
-		
-//PD
-		JLabel lblPdesarrollo = new JLabel("P.Desarrollo");
-		lblPdesarrollo.setBounds(272, 88, 73, 14);
-		frame.getContentPane().add(lblPdesarrollo);
-		
-		textFieldPD = new JTextField();
-		textFieldPD.setEditable(false);
-		textFieldPD.setBounds(345, 85, 86, 20);
-		frame.getContentPane().add(textFieldPD);
-		textFieldPD.setColumns(10);
-		textFieldPD.setText("400");
-		
-//Raza
-		JLabel lblRaza = new JLabel("Raza");
-		lblRaza.setBounds(37, 121, 46, 14);
-		frame.getContentPane().add(lblRaza);
-		
-		final JComboBox getterRaza = new JComboBox();
-		getterRaza.setModel(new DefaultComboBoxModel(new String[] {"Humano"}));
-		getterRaza.setBounds(93, 118, 86, 20);
-		frame.getContentPane().add(getterRaza);
-		
-		JLabel lblTamao = new JLabel("Tamano:");
-		lblTamao.setBounds(272, 124, 46, 14);
-		frame.getContentPane().add(lblTamao);
-		
-//Apariencia
-		JLabel lblApariencia = new JLabel("Apariencia");
-		lblApariencia.setBounds(37, 160, 55, 14);
-		frame.getContentPane().add(lblApariencia);
-		
-		textFieldApa = new JTextField();
-		textFieldApa.setEditable(false);
-		textFieldApa.setBounds(93, 157, 86, 20);
-		frame.getContentPane().add(textFieldApa);
-		textFieldApa.setColumns(10);
-		
-		btnTiradorApa = new JButton("Tirador");
-		btnTiradorApa.setBounds(229, 156, 89, 23);
-		frame.getContentPane().add(btnTiradorApa);
-		ActionTirador actionTiradorApa = new ActionTirador();
-		btnTiradorApa.addActionListener(actionTiradorApa);
-	
 //Atributos
 		JLabel lblBase = new JLabel("Base");
 		lblBase.setBounds(109, 215, 46, 14);
@@ -231,13 +155,6 @@ public class animaGUI {
 		imagePanel = new JPanel();
 		imagePanel.setBounds(539, 49, 271, 400);
 		frame.getContentPane().add(imagePanel);
-		
-//Inserta imagen
-		JPanel bloqueImagen=new JPanel();
-		imagen = ImageIO.read(new File("src/Images/Guerrero.png"));
-		imagenLabel = new JLabel(new ImageIcon(imagen));
-		imagePanel.add(imagenLabel);
-		imagePanel.repaint();
 		
 		btnTiradorAtributos = new JButton("Tirador");
 		btnTiradorAtributos.setBounds(320, 229, 89, 23);
@@ -259,33 +176,12 @@ public class animaGUI {
 		frame.getContentPane().add(textAreaTirador);
 		
 		
-		textFieldTam = new JTextField();
-		textFieldTam.setEditable(false);
-		textFieldTam.setBounds(343, 118, 81, 20);
-		frame.getContentPane().add(textFieldTam);
-		textFieldTam.setColumns(10);
+		
+
 		
 	}
 	
-	public class ActionLevel implements ActionListener{
 		
-		public void actionPerformed(ActionEvent event){
-			
-			if(getterLevel.getSelectedItem()=="0"){
-				textFieldPD.setText("400");
-			}
-			
-			if(getterLevel.getSelectedItem()=="1"){
-				textFieldPD.setText("600");
-			}
-			
-			if(getterLevel.getSelectedItem()=="2"){
-				textFieldPD.setText("700");
-			}
-			
-		}
-	}
-	
 	public class ActionTirador implements ActionListener{
 		
 		public void actionPerformed(ActionEvent event){
@@ -342,37 +238,6 @@ public class animaGUI {
 		}
 	}
 	
-	public class ActionClase implements ActionListener{
-		
-		public void actionPerformed(ActionEvent event){
-			
-			if(getterClase.getSelectedItem()=="Guerrero"){
-				try {
-					imagen = ImageIO.read(new File("src/Images/Guerrero.png"));
-					imagenLabel = new JLabel(new ImageIcon(imagen));
-					imagePanel.add(imagenLabel);
-					imagePanel.repaint();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-			if(getterClase.getSelectedItem()=="Guerrero Acrobata"){
-				
-					try {
-						imagen = ImageIO.read(new File("src/Images/Acrobata.png"));
-						imagenLabel = new JLabel(new ImageIcon(imagen));
-						imagePanel.add(imagenLabel);
-						imagePanel.repaint();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-			}
-			
-		}
-	}
+	
 	
 }
