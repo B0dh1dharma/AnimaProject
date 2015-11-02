@@ -17,6 +17,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.border.BevelBorder;
 import javax.swing.ListSelectionModel;
 
@@ -35,10 +36,13 @@ import javax.swing.JTextPane;
 import javax.swing.border.MatteBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.JTextArea;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 
+import GUI.PruebaTabla.TableDataChange;
 import utilities.*;
 
 public class animaGUI {
@@ -232,13 +236,17 @@ public class animaGUI {
 		imagePanel.setBounds(539, 49, 271, 400);
 		frame.getContentPane().add(imagePanel);
 		
+		
+		
 //Inserta imagen
 		JPanel bloqueImagen=new JPanel();
 		imagen = ImageIO.read(new File("src/Images/Guerrero.png"));
 		imagenLabel = new JLabel(new ImageIcon(imagen));
 		imagePanel.add(imagenLabel);
 		imagePanel.repaint();
+
 		
+//Tirador y area
 		btnTiradorAtributos = new JButton("Tirador");
 		btnTiradorAtributos.setBounds(320, 229, 89, 23);
 		frame.getContentPane().add(btnTiradorAtributos);
@@ -264,6 +272,8 @@ public class animaGUI {
 		textFieldTam.setBounds(343, 118, 81, 20);
 		frame.getContentPane().add(textFieldTam);
 		textFieldTam.setColumns(10);
+		
+		tablaAtributos.getModel().addTableModelListener(new TableDataChange());
 		
 	}
 	
@@ -373,6 +383,19 @@ public class animaGUI {
 			}
 			
 		}
+	}
+	
+	public class TableDataChange implements TableModelListener{
+		
+		public void tableChanged(TableModelEvent e){
+			Integer fila =e.getFirstRow();
+			Integer columna= e.getColumn();
+			TableModel modelo=(TableModel)e.getSource();
+			Object valor=modelo.getValueAt(fila, columna);
+			textAreaTirador.setText(valor.toString());
+		}
+		
+		
 	}
 	
 }
